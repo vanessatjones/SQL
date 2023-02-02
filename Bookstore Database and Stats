@@ -1,0 +1,40 @@
+--Create a bookstore database
+
+CREATE TABLE bookstore (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, section TEXT, quantity INTEGER);
+
+INSERT INTO bookstore VALUES (1, 'pens', 5, 'stationery', 87);
+INSERT INTO bookstore VALUES (2, 'pencils', 2, 'stationery', 93);
+INSERT INTO bookstore VALUES (3, 'markers', 5, 'stationery', 72);
+INSERT INTO bookstore VALUES (4, 'highlighters', 5, 'stationery', 50);
+INSERT INTO bookstore VALUES (5, 'notebooks', 10, 'stationery', 33);
+INSERT INTO bookstore VALUES (6, 'planners', 15, 'stationery', 20);
+INSERT INTO bookstore VALUES (7, 'diaries', 15, 'stationery', 15);
+INSERT INTO bookstore VALUES (8, 'calendars', 10, 'stationery', 67);
+INSERT INTO bookstore VALUES (9, 'fantasy books', 25, 'books', 27);
+INSERT INTO bookstore VALUES (10, 'horror books', 27, 'books', 38);
+INSERT INTO bookstore VALUES (11, 'romance books', 25, 'books', 53);
+INSERT INTO bookstore VALUES (12, 'picture books', 15, 'books', 17);
+INSERT INTO bookstore VALUES (13, 'adventure books', 20, 'books', 32);
+INSERT INTO bookstore VALUES (14, 'suspense books', 20, 'books', 41);
+INSERT INTO bookstore VALUES (15, 'coffee mugs', 15, 'misc', 33);
+
+--display the database ordered by price 
+SELECT * 
+FROM bookstore 
+ORDER BY price;
+
+--what is the sum price of items in the stationery section? 
+SELECT SUM (price) 
+FROM bookstore 
+WHERE section = 'stationery';
+
+--how many items are more than $15?
+SELECT * 
+FROM bookstore 
+WHERE price > 15;
+
+--what is the total sum of books?
+SELECT SUM (quantity) 
+FROM bookstore 
+WHERE section = 'books';
+
