@@ -1,0 +1,15 @@
+Data set from top_movies.sql
+/* Source: http://www.boxofficemojo.com/alltime/world/ */
+
+
+CREATE TABLE topmovies(
+   Rank        INTEGER,
+   Title       TEXT,
+   Studio      TEXT,
+   Worldwide   REAL,
+   Domestic    REAL,
+   DomesticPct REAL,
+   Overseas    REAL,
+   OverseasPct REAL,
+   Year        INTEGER
+);
