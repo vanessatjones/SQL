@@ -1,0 +1,62 @@
+Dataset Source: https://gist.github.com/pamelafox/585364b62390ea720858
+
+/* Marvel Heroes and Villains
+ Based on the website http://marvel.wikia.com/Main_Page
+ with popularity data from http://observationdeck.io9.com/something-i-found-marvel-character-popularity-poll-cb-1568108064 
+ and power grid data from http://marvel.wikia.com/Power_Grid#Power
+ Collected by: https://www.khanacademy.org/profile/Mentrasto/
+ */
+ 
+ This dataset contains information of Marvel characters that has their name, popularity, alignment (good, bad, or neutral), gender, height, weight, hometown, 
+ intelligence, strength, speed, durability, energy projection, and fighting skills. 
+ 
+ With this data, I want to answer a few of the following questions:
+ 
+ Who are the top 5 most popular Marvel characters?
+   SELECT name, popularity 
+   FROM marvels 
+   WHERE popularity < 6 
+   ORDER BY popularity;
+ 
+ 
+ What is the average height of the Marvel characters?
+  SELECT AVG(height_m) AS Average_Height 
+  FROM marvels;
+   
+What is the sum strength of Marvel characters based on alignment?
+   SELECT alignment, SUM(strength) AS Total_Strength 
+   FROM marvels 
+   GROUP BY alignment; 
+
+Who are the female Marvel characters?
+   SELECT name 
+   FROM marvels 
+   WHERE gender = "Female";
+   
+ Who are the top 3 fastest female Marvel characters?
+   SELECT name, speed 
+   FROM marvels
+   WHERE gender = "Female" 
+   ORDER BY speed desc 
+   LIMIT 3;
+ 
+ What is the average intelligence of the male Marvel characters?
+   SELECT gender, AVG(intelligence) AS Average_Intelligence 
+   FROM marvels 
+   WHERE gender = "Male";
+   
+What Marvel characters are considered smart and not smart based on their intelligence level?
+   SELECT name, intelligence,
+   CASE
+   WHEN intelligence > 3 THEN "smart"
+   ELSE "not smart"
+   END AS Smart_NotSmart
+   FROM marvels
+   ORDER BY intelligence;
+   
+ What good Marvel characters do you want to help save the world based on their fighting skills?
+ SELECT name, fighting_Skills, alignment 
+ FROM marvels 
+ WHERE fighting_Skills > 3 AND alignment = "Good" 
+ ORDER BY fighting_Skills;
+ 
